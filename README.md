@@ -5,9 +5,9 @@ There's a fair amount of boilerplate infrastructure that needs to be in place be
 
 Start a new project called SimpleMvvm with an empty activity called MainActivity. I'm using API level 23. 
 
-##Admin
+## Admin
 
-###Enabling databinding
+### Enabling databinding
 
 Open up build.gradle (Module: app)
 At the bottom of the android {} section, just underneath the buildTypes{} tag, add a new section:
@@ -18,7 +18,7 @@ dataBinding {
     }
 ```
 
-###Add ViewModel component
+### Add ViewModel component
 
 This is likely to change as and when Android push out more updates to the relatively new databinding toolset. You need to add a couple of references to Gradle to pull in the necessary components.
 
@@ -56,7 +56,7 @@ In the new `models` package, create a class called `Person`
 Add `private String firstName`, `private String lastName` and `private int age` to the `Person` class. 
 Create getters and setters for `firstName`, `lastName` and `age`.
 
-###Main ViewModel
+### Main ViewModel
 
 Create a new package called `viewmodels` in `example.codeclan.com.simplemvvm`.
 Add a new class to the `viewmodels` package called `MainViewModel`.
@@ -68,7 +68,7 @@ The docs for the Android ViewModel class are [here](https://developer.android.co
 
 >The ViewModel class is designed to store and manage UI-related data so that the data survives configuration changes such as screen rotations.
 
-###View
+### View
 
 Open up `activity_main.xml`.
 
@@ -108,7 +108,7 @@ We need to provide the interface file with something to bind to/get values from.
 
 The next time you build the project Android Studio should see this layout file and auto-create the files you need to bind this layout to a `ViewModel`. Go to the Build menu and select Make Project.
 
-###Binding
+### Binding
 
 Last but not least we need to tell the `Activity` to bind the `View` to the `ViewModel`. Open up `MainActivity.java`. In the `onCreate()` method, just after `setContentView()`, add:
 
@@ -119,7 +119,7 @@ binding.setViewModel(new MainViewModel());
 
 If we're very lucky this is the last time we'll need to do anything in the `Activity` file - no more manual setting of `TextView` values!
 
-###Object ViewModel
+### Object ViewModel
 
 Ideally you don't want to be working directly with your `Models` - it's really common that you might only want to use a subset of the properties (e.g. the `Person` class might have an `int Id` for DB storage, but we don't need it to collect their `name`), or that you might want to add some things you need to make the `View` work that don't really belong on a `Person`. To bind to a class it also has to extend an Android class called `BaseObservable`, and a common or garden `Person` doesn't need this. We're going to wrap `Person` in a `ViewModel` to make it easier to work with in the `View`, and to provide some bindable values. 
 
@@ -191,7 +191,7 @@ public MainViewModel()
 }
 ```
 
-###View controls
+### View controls
 
 We're going to stick a few `TextView` controls into a chain to display our `PersonViewModel` values. 
 
@@ -296,7 +296,7 @@ Add an 8dp margin to each `TextView` control:
     app:layout_constraintBottom_toBottomOf="parent"/>
 ```
 
-##The good bit
+## The good bit
 
 Finally the good bit!
 
