@@ -49,7 +49,7 @@ annotationProcessor "android.arch.lifecycle:compiler:1.0.0-alpha3"
 Resync the project.
 All being well, we should now be set up to use the databinding tools and the ViewModel class.
 
-###Model
+### Model
 
 In `example.codeclan.com.simplemvvm`, create a new package called `models`
 In the new `models` package, create a class called `Person`
